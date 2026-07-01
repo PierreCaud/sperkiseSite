@@ -1,78 +1,256 @@
 .homepage {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    color: #333;
-    text-align: center;
-    background-color: #f5f5f5;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  position: relative;
+}
+
+.hero {
+  display: grid;
+  grid-template-columns: 1.2fr 0.9fr;
+  gap: 1.5rem;
+  align-items: center;
+  padding: 1.5rem;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  background: linear-gradient(135deg, rgba(255, 251, 245, 0.88), rgba(255, 241, 226, 0.7));
+  box-shadow: var(--shadow);
+}
+
+.heroCopy h1,
+.sectionHeading h2,
+.highlightBand h2 {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  color: var(--text);
+}
+
+.heroCopy h1 {
+  max-width: 12ch;
+  font-size: clamp(3rem, 7vw, 5.75rem);
+}
+
+.kicker {
+  margin: 0 0 0.85rem;
+  color: var(--accent-strong);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+}
+
+.lead {
+  margin: 1.2rem 0 0;
+  max-width: 56ch;
+  color: var(--muted);
+  font-size: 1.08rem;
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.primaryAction,
+.secondaryAction {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 1.2rem;
+  border-radius: 999px;
+  font-weight: 700;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease;
+}
+
+.primaryAction {
+  background: linear-gradient(135deg, var(--accent), #ef8b44);
+  color: #fff8f1;
+  box-shadow: 0 16px 32px rgba(217, 107, 43, 0.28);
+}
+
+.secondaryAction {
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.55);
+  color: var(--text);
+}
+
+.primaryAction:hover,
+.secondaryAction:hover {
+  transform: translateY(-2px);
+}
+
+.heroVisual {
+  display: grid;
+  gap: 1rem;
+}
+
+.logoFrame {
+  display: grid;
+  place-items: center;
+  min-height: 340px;
+  border-radius: calc(var(--radius-xl) - 6px);
+  background:
+    radial-gradient(circle at 50% 40%, rgba(255, 227, 199, 0.8), transparent 36%),
+    linear-gradient(160deg, rgba(39, 26, 19, 0.94), rgba(78, 47, 26, 0.94));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  overflow: hidden;
+  position: relative;
+}
+
+.logoFrame::after {
+  content: '';
+  position: absolute;
+  inset: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: inherit;
+}
+
+.logo {
+  width: min(78%, 18rem);
+  height: auto;
+  filter: drop-shadow(0 18px 40px rgba(0, 0, 0, 0.38));
+  animation: float 8s ease-in-out infinite;
+}
+
+.heroNote,
+.card,
+.highlightBand {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 18px 50px rgba(73, 40, 18, 0.1);
+}
+
+.heroNote {
+  padding: 1rem 1.1rem;
+}
+
+.noteLabel {
+  display: inline-flex;
+  padding: 0.35rem 0.65rem;
+  margin-bottom: 0.75rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.heroNote strong {
+  display: block;
+  font-size: 1.05rem;
+}
+
+.heroNote p,
+.card p,
+.highlightBand p {
+  margin: 0.5rem 0 0;
+  color: var(--muted);
+}
+
+.section {
+  margin-top: 1.4rem;
+}
+
+.sectionHeading {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  margin-bottom: 1rem;
+}
+
+.sectionHeading h2,
+.highlightBand h2 {
+  font-size: clamp(2rem, 4vw, 3.3rem);
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  padding: 1.2rem;
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.highlightBand {
+  display: flex;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 1.4rem;
+  padding: 1.3rem 1.4rem;
+  background: linear-gradient(135deg, rgba(217, 107, 43, 0.14), rgba(255, 255, 255, 0.72));
+}
+
+.highlightBand p {
+  max-width: 44ch;
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
   }
-  
-  .header {
-    background-color: #d6aa83;
-    padding: 40px 20px;
-    border-radius: 10px;
+  50% {
+    transform: translateY(-8px);
   }
-  
-  .header h1 {
-    font-size: 36px;
-    color: #ffffff;
+}
+
+@media (max-width: 960px) {
+  .hero,
+  .highlightBand,
+  .cardGrid {
+    grid-template-columns: 1fr;
   }
-  
-  .header p {
-    font-size: 20px;
-    color: #ffffff;
+
+  .highlightBand {
+    align-items: flex-start;
   }
-  
-  .welcome-section, .activities-section, .reconstruction-section {
-    margin: 40px 0;
-    padding: 20px;
-    background-color: #ffffff;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width: 720px) {
+  .homepage {
+    padding-top: 1rem;
   }
-  
-  .welcome-section h2, .activities-section h2, .reconstruction-section h2 {
-    font-size: 28px;
-    color: #d6aa83;
+
+  .hero,
+  .highlightBand {
+    padding: 1rem;
   }
-  
-  .welcome-section p, .activities-section li, .reconstruction-section p {
-    font-size: 18px;
-    line-height: 1.6;
-    color: #555;
+
+  .heroCopy h1 {
+    max-width: 100%;
+    line-height: 1.02;
   }
-  
-  .activities-section ul {
-    list-style: none;
-    padding: 0;
+
+  .logoFrame {
+    min-height: 260px;
   }
-  
-  .activities-section li {
-    line-height: 1.8;
+
+  .actions {
+    flex-direction: column;
   }
-  
-  .footer {
-    margin-top: 40px;
-    padding: 20px;
-    background-color: #d6aa83;
-    color: #fff;
-    border-radius: 10px;
+
+  .primaryAction,
+  .secondaryAction {
+    width: 100%;
   }
-  
-  .footer p {
-    font-size: 16px;
-  }
-  
-  /* Media queries for responsiveness */
-  @media (max-width: 768px) {
-    .header h1 {
-      font-size: 28px;
-    }
-  
-    .welcome-section h2, .activities-section h2, .reconstruction-section h2 {
-      font-size: 24px;
-    }
-  
-    .welcome-section p, .activities-section li, .reconstruction-section p {
-      font-size: 16px;
-    }
-  }
+}

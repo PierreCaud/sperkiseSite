@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { fetchEntries } from '../../utils/contentfulPosts' // Fetch Contentful entries
 import ShortPosts from '../../components/ShortPosts' // Post component
+import styles from '../../style/articlesPage.module.css'
 
 export interface Image {
   fields: {
@@ -91,11 +92,26 @@ const Home: React.FC = () => {
   }
 
   if (loading) {
-    return <div>Loading...</div> // Show loading indicator while fetching
+    return <div className={styles.state}>Chargement des articles…</div>
   }
 
   return (
-    <div>
+    <div className={styles.pageShell}>
+      <header className={styles.pageHeader}>
+        <p className={styles.kicker}>Articles</p>
+        <h1>Les publications du club, mises en avant proprement.</h1>
+        <p>
+          Une lecture plus confortable pour les annonces et les retours sur les
+          sujets qui comptent pour Sperkise.
+        </p>
+      </header>
+
+      {posts.length === 0 && (
+        <div className={styles.state}>
+          Aucun article disponible pour le moment.
+        </div>
+      )}
+
       {posts.map((post, index) => (
         <ShortPosts
           key={post.sys.id}

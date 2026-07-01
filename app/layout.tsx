@@ -1,15 +1,24 @@
 import Navbar from '@/components/Navbar'
 import '../style/globals.css'
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Cormorant_Garamond, Manrope } from 'next/font/google'
 import React from 'react'
 
-const inter = Inter({ subsets: ['latin'] })
+const bodyFont = Manrope({
+  subsets: ['latin'],
+  variable: '--font-body',
+})
+
+const displayFont = Cormorant_Garamond({
+  subsets: ['latin'],
+  variable: '--font-display',
+  weight: ['500', '600', '700'],
+})
 
 export const metadata: Metadata = {
-  title: 'Sperkise - Club de Minéralogie et de Paléontologie de Wasquehal ',
+  title: 'Sperkise | Club de minéralogie et paléontologie de Wasquehal',
   description:
-    'Site du club de Minéralogie et de Paléontologie de la Métropole Nord - Wasquehal: Sperkise',
+    'Site du club de minéralogie et de paléontologie de la Métropole Nord - Wasquehal: Sperkise.',
 }
 
 export default function RootLayout({
@@ -18,8 +27,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang='en'>
-      <body className={inter.className}>
+    <html lang='fr' data-scroll-behavior='smooth'>
+      <body className={`${bodyFont.variable} ${displayFont.variable}`}>
         <Navbar />
         <main>{children}</main>
       </body>
