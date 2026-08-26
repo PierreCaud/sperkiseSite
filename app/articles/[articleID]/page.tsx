@@ -4,6 +4,7 @@ import { useParams } from 'next/navigation'
 import fetchById from '../../../utils/fetchById'
 import type { ContentfulPost } from '../page'
 import ReactMarkdown from 'react-markdown'
+import Image from 'next/image'
 import styles from '../../../style/article.module.css'
 
 const Article: React.FC = () => {
@@ -28,25 +29,44 @@ const Article: React.FC = () => {
   }, [articleID])
 
   if (loading) {
-    return <div>Loading...</div>
+    return <div className={styles.state}>Chargement de l’article…</div>
   }
 
   if (!post) {
-    return <div>Post not found</div>
+    return <div className={styles.state}>Article introuvable.</div>
   }
 
   return (
     <div className={styles.pageContainer}>
       <div className={styles.post}>
+        <p className={styles.kicker}>Article</p>
         <h1>{post.titre}</h1>
         {post.dateDePublication && (
-          <h3>{new Date(post.dateDePublication).toLocaleDateString()}</h3>
+          <h3>
+            {new Date(post.dateDePublication).toLocaleDateString('fr-FR')}
+          </h3>
+        )}
+        {post.imageDeCouverture && (
+          <figure className={styles.mediaFrame}>
+            <Image
+              alt={
+                post.imageDeCouverture.fields?.description ||
+                'Image de couverture de l’article'
+              }
+              src={`https:${post.imageDeCouverture.fields?.file?.url}`}
+              fill={true}
+              sizes='(max-width: 768px) 92vw, 720px'
+              priority={true}
+              loading='eager'
+              className={styles.postImage}
+            />
+          </figure>
         )}
         <div className={styles.textContent}>
           <ReactMarkdown>{post.texte}</ReactMarkdown>
         </div>
         {post.auteur && (
-          <p className={styles.author}>By {post.auteur.fields?.nom}</p>
+          <p className={styles.author}>Par {post.auteur.fields?.nom}</p>
         )}
       </div>
     </div>
@@ -54,14 +74,3 @@ const Article: React.FC = () => {
 }
 
 export default Article
-
-/*{post.imageDeCouverture && (
-          <img
-            alt={
-              post.imageDeCouverture.fields?.description ||
-              'No description available'
-            }
-            src={`https:${post.imageDeCouverture.fields?.file?.url}`}
-            className={styles.postImage}
-          />
-        )}*/

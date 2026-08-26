@@ -1,24 +1,33 @@
 .post-summary {
   display: flex;
   flex-direction: column; /* Stack content vertically on mobile */
-  padding: 10px;
-  border: 1px solid #d6aa83; /* Border follows the theme */
+  padding: 1rem;
+  border: 1px solid var(--border); /* Border follows the theme */
   cursor: pointer;
-  transition: transform 0.3s;
-  background-color: #fff; /* White background */
+  transition:
+    transform 0.24s ease,
+    box-shadow 0.24s ease,
+    border-color 0.24s ease;
+  background: var(--surface); /* White background */
+  border-radius: var(--radius-lg);
+  box-shadow: 0 16px 42px rgba(73, 40, 18, 0.08);
+  margin-bottom: 1rem;
 }
 
 /* On hover, slight scaling effect */
 .post-summary:hover {
-  transform: scale(1.02);
+  transform: translateY(-3px);
+  box-shadow: 0 22px 52px rgba(73, 40, 18, 0.12);
+  border-color: rgba(217, 107, 43, 0.3);
 }
 
 /* Ensure the image takes up proper width and scales well on mobile */
 .summary-image {
   width: 100%; /* Full width image for mobile */
   height: auto;
-  border-radius: 5px;
-  margin-bottom: 10px; /* Space below the image on mobile */
+  border-radius: 18px;
+  margin-bottom: 0.85rem; /* Space below the image on mobile */
+  object-fit: cover;
 }
 
 /* The content will now take up available space */
@@ -34,25 +43,28 @@
 }
 
 .summary-content h2 {
-  font-size: 20px; /* Mobile-friendly font size */
+  margin: 0;
+  font-size: 1.35rem; /* Mobile-friendly font size */
   margin-bottom: 5px;
-  color: #d6aa83; /* Heading color follows the theme */
+  color: var(--text); /* Heading color follows the theme */
+  font-family: var(--font-display), serif;
 }
 
 .summary-content h3 {
-  font-size: 12px;
-  color: #7c7c7c;
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin: 0;
 }
 
 .author {
-  font-size: 12px;
-  color: #7c7c7c;
+  font-size: 0.82rem;
+  color: var(--muted);
 }
 
 .mini-text {
-  font-size: 15px;
+  font-size: 0.98rem;
   margin-top: 10px;
-  color: #555; /* Darker text color for readability */
+  color: var(--muted); /* Darker text color for readability */
   word-wrap: break-word; 
   margin-bottom: 5px;
 }
@@ -61,8 +73,9 @@
 @media (min-width: 767px) {
   .post-summary {
     flex-direction: row; /* Switch to horizontal layout on larger screens */
-    padding: 15px;
+    padding: 1.1rem;
     align-items: center; /* Ensures image and text align vertically */
+    gap: 1rem;
   }
 
   /* Ensure proper left or right image alignment */
@@ -76,9 +89,9 @@
 
   /* Adjust image size on larger screens */
   .summary-image {
-    width: 200px; /* Fixed image size */
+    width: 220px; /* Fixed image size */
     height: auto;
-    margin-right: 20px; /* Space between image and text */
+    margin-right: 0; /* Space between image and text */
   }
 
   /* Allow text to take up the rest of the space next to the image */
@@ -88,7 +101,7 @@
   }
 
   .summary-content h2 {
-    font-size: 30px; /* Larger font size */
+    font-size: 2rem; /* Larger font size */
   }
 
   .summary-content h3 {
@@ -96,18 +109,18 @@
   }
 
   .mini-text {
-    font-size: 16px;
+    font-size: 1rem;
   }
 }
 
 /* For desktop (1024px and up) */
 @media (min-width: 1024px) {
   .post-summary {
-    padding: 20px;
+    padding: 1.2rem;
   }
 
   .summary-content h2 {
-    font-size: 40px; /* Even larger text for desktop */
+    font-size: 2.4rem; /* Even larger text for desktop */
   }
 
   .summary-content h3 {
@@ -115,6 +128,6 @@
   }
 
   .mini-text {
-    font-size: 20px;
+    font-size: 1.08rem;
   }
 }

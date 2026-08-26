@@ -1,53 +1,100 @@
 import React from 'react'
+import Link from 'next/link'
+import Image from 'next/image'
 import styles from '../style/homePage.module.css' // Custom styles for the homepage
 
 const HomePage = () => {
   return (
     <div className={styles['homepage']}>
-      <header className={styles['header']}>
-        <h1>Club de Minéralogie et Paléontologie de la Métropole Nord</h1>
+      <section className={styles.hero}>
+        <div className={styles.heroCopy}>
+          <p className={styles.kicker}>Wasquehal · Sciences de la Terre</p>
+          <h1>
+            Le club où les minéraux, les fossiles et les curieux se rencontrent.
+          </h1>
+          <p className={styles.lead}>
+            Sperkise rassemble les passionnés de minéralogie et de paléontologie
+            autour de conférences, d&apos;échanges, de sorties terrain et de
+            notre bourse annuelle.
+          </p>
+
+          <div className={styles.actions}>
+            <Link href='/actualites' className={styles.primaryAction}>
+              Voir les actualités
+            </Link>
+            <Link href='/contact' className={styles.secondaryAction}>
+              Nous contacter
+            </Link>
+          </div>
+        </div>
+
+        <div className={styles.heroVisual}>
+          <div className={styles.logoFrame}>
+            <Image
+              src='/images/logo.png'
+              alt='Logo Sperkise'
+              width={420}
+              height={420}
+              priority={true}
+              className={styles.logo}
+            />
+          </div>
+          <div className={styles.heroNote}>
+            <span className={styles.noteLabel}>Prochaine étape</span>
+            <strong>
+              Retrouver la bourse, les réunions et les articles du club.
+            </strong>
+            <p>
+              Une vitrine simple, claire et vivante pour suivre la vie de
+              l&apos;association.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section className={styles.section}>
+        <div className={styles.sectionHeading}>
+          <p className={styles.kicker}>Pourquoi venir</p>
+          <h2>Un club vivant, curieux et concret.</h2>
+        </div>
+
+        <div className={styles.cardGrid}>
+          <article className={styles.card}>
+            <h3>Des rendez-vous réguliers</h3>
+            <p>
+              Réunions mensuelles, conférences et échanges autour des fossiles,
+              des minéraux, des météorites et des volcans.
+            </p>
+          </article>
+
+          <article className={styles.card}>
+            <h3>Du terrain, pas seulement des vitrines</h3>
+            <p>
+              Sorties de collecte, observations sur site et partage de méthodes,
+              avec une vraie dimension de découverte.
+            </p>
+          </article>
+
+          <article className={styles.card}>
+            <h3>Une belle mémoire commune</h3>
+            <p>
+              Plus de 600 ouvrages, des ressources pour apprendre et une bourse
+              annuelle qui met le club en lumière.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section className={styles.highlightBand}>
+        <div>
+          <p className={styles.kicker}>En ce moment</p>
+          <h2>Le site continue d&apos;évoluer, mais la base est déjà là.</h2>
+        </div>
         <p>
-          Bienvenue sur le site de Sperkise, lieu de passion pour les Sciences
-          de la Terre !
-        </p>
-      </header>
-      <section className={styles['welcome-section']}>
-        <h2>Découvrez notre club</h2>
-        <p>
-          Le Club de Minéralogie et Paléontologie de la Métropole Nord est
-          heureux de vous accueillir sur son site. Ce lieu de dialogue et de
-          passion vous apportera convivialité, aide et échanges de
-          connaissances. Venez découvrir nos activités, et peut-être nous
-          rejoindre pour partager notre passion !
+          Si vous repérez un contenu à corriger ou une idée de mise en page qui
+          servirait mieux le club, vous pouvez nous écrire directement.
         </p>
       </section>
-      <section className={styles['activities-section']}>
-        <h2>Nos Activités</h2>
-        <ul>
-          <li>
-            Conférences sur les fossiles, dinosaures, roches, minéraux,
-            météorites et volcans
-          </li>
-          <li>Réunions mensuelles le premier vendredi du mois à Wasquehal</li>
-          <li>Sorties terrain pour collecte de fossiles et minéraux</li>
-          <li>Accès à notre bibliothèque de plus de 600 ouvrages</li>
-          <li>Bourse aux minéraux et fossiles internationale en septembre</li>
-        </ul>
-      </section>
-      <section className={styles['reconstruction-section']}>
-        <h2>Attention !</h2>
-        <p>
-          Notre site est actuellement en pleine refonte. Certaines
-          fonctionnalités peuvent ne pas encore être disponibles, et du contenu
-          peut changer régulièrement. Merci de votre compréhension.
-        </p>
-      </section>
-      <footer className={styles['footer']}>
-        <p>
-          Rejoignez-nous pour nos événements mensuels et partagez notre passion
-          pour les minéraux et fossiles !
-        </p>
-      </footer>
     </div>
   )
 }

@@ -19,6 +19,10 @@ export async function fetchEntries() {
   console.error('Error getting Entries.')
 }
 
+export async function fetchEntryById(id: string) {
+  return client.getEntry(id)
+}
+
 const contentfulAPI = { fetchEntries }
 
 export default contentfulAPI

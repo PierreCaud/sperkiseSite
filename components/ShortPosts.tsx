@@ -1,12 +1,13 @@
 import React from 'react'
 import ReactMarkdown from 'react-markdown'
-import type { Image, Author } from '../app/articles/page'
+import Image from 'next/image'
+import type { Image as ContentfulImage, Author } from '../app/articles/page'
 import styles from '../style/miniArticles.module.css'
 
 interface PostSummaryProps {
   title: string
   miniText?: string // A brief summary of the post
-  image?: Image // Optional image
+  image?: ContentfulImage // Optional image
   author?: Author
   date?: string
   index: number // Position index to alternate layout
@@ -31,14 +32,24 @@ const ShortPosts: React.FC<PostSummaryProps> = ({
   const isImageLeft = index % 2 === 0
 
   return (
-    <div
+    <article
       className={`${styles['post-summary']} ${isImageLeft ? styles['image-left'] : styles['image-right']}`}
       onClick={onClick}
+      role='button'
+      tabIndex={0}
+      onKeyDown={event => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          event.preventDefault()
+          onClick()
+        }
+      }}
     >
       {imageUrl && (
-        <img
+        <Image
           alt={image?.fields?.description || 'No description available'}
           src={imageUrl}
+          width={560}
+          height={420}
           className={styles['summary-image']}
         />
       )}
@@ -50,7 +61,7 @@ const ShortPosts: React.FC<PostSummaryProps> = ({
         </ReactMarkdown>
         {author && <p className={styles.author}>By {authorName}</p>}
       </div>
-    </div>
+    </article>
   )
 }
 

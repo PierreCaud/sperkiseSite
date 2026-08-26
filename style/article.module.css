@@ -1,36 +1,78 @@
-/* Style général pour les articles */
+.pageContainer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-top: 1.5rem;
+}
+
+.state {
+  max-width: var(--max-width);
+  margin: 1.5rem auto 0;
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  color: var(--muted);
+}
+
 .post {
-  background-color: #ffffff;
-  border-radius: 10px;
-  padding: 20px;
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  padding: 1.4rem;
   margin-bottom: 40px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow);
   text-align: left;
   position: relative;
+  border: 1px solid var(--border);
+  overflow: hidden;
+}
+
+.post::before {
+  content: '';
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 12rem;
+  height: 12rem;
+  background: radial-gradient(circle, rgba(217, 107, 43, 0.16), transparent 70%);
+  pointer-events: none;
 }
 
 /* Image en arrière-plan du titre */
-.postImage{
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 24rem;
-  height: 24rem;
-  object-fit: cover;
+.postImage {
+  object-fit: contain;
+  object-position: center;
+  padding: 0.75rem;
+}
+
+.mediaFrame {
+  position: relative;
+  width: min(100%, 34rem);
+  aspect-ratio: 3 / 4;
+  max-height: 70vh;
+  margin: 1rem auto 1.25rem;
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(255, 248, 239, 0.95), rgba(244, 230, 214, 0.8)),
+    var(--surface);
+  border: 1px solid var(--border);
+  box-shadow: 0 18px 38px rgba(56, 26, 12, 0.16);
+  overflow: hidden;
 }
 
 .post h1 {
-  font-size: 32px;
-  color: #d6aa83;
-  margin-bottom: 20px;
+  margin: 0.2rem 0 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(2.2rem, 5vw, 4rem);
+  line-height: 0.96;
+  color: var(--text);
 }
 
 /* Text content */
 .textContent {
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.6;
-  color: #333;
-  margin-right: 50%; /* Prévenir chevauchement de l'image */
+  color: var(--text);
+  max-width: 74ch;
 }
 
 .textContent p {
@@ -63,65 +105,86 @@
 /* Style pour le gras et l'italique */
 .textContent strong {
   font-weight: bold;
-  color: #000;
+  color: var(--text);
 }
 
 .textContent em {
   font-style: italic;
-  color: #555;
+  color: var(--muted);
 }
 
 /* Blockquote */
 .textContent blockquote {
-  border-left: 4px solid #d6aa83;
+  border-left: 4px solid var(--accent);
   padding-left: 15px;
   font-style: italic;
-  color: #555;
+  color: var(--muted);
   margin: 20px 0;
 }
 
 /* Gestion des liens */
 .textContent a {
-  color: #d6aa83;
+  color: var(--accent-strong);
   text-decoration: none;
-  border-bottom: 1px dotted #d6aa83;
+  border-bottom: 1px dotted var(--accent-strong);
 }
 
 .textContent a:hover {
-  color: #c49572;
-  border-bottom: 1px solid #c49572;
+  color: var(--accent);
+  border-bottom: 1px solid var(--accent);
 }
 
 /* Code inline et block */
 .textContent code {
-  background-color: #f4f4f4;
+  background-color: rgba(36, 25, 19, 0.06);
   padding: 2px 5px;
-  border-radius: 3px;
-  font-family: 'Courier New', Courier, monospace;
+  border-radius: 6px;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 .textContent pre {
-  background-color: #f4f4f4;
+  background-color: rgba(36, 25, 19, 0.06);
   padding: 15px;
-  border-radius: 5px;
+  border-radius: 14px;
   overflow-x: auto;
   margin-bottom: 20px;
-  font-family: 'Courier New', Courier, monospace;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+.kicker {
+  display: inline-flex;
+  padding: 0.35rem 0.7rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.author {
+  margin-top: 1.2rem;
+  color: var(--muted);
+  font-weight: 700;
+}
+
+@media (min-width: 900px) {
+  .post {
+    padding: 1.8rem;
+  }
 }
 
 /* Responsive */
 @media (max-width: 768px) {
   .post h1 {
     margin-top: 10px;
-    font-size: 28px;
+    font-size: 2.2rem;
   }
 
-  .textContent {
-    margin-right: 0;
-    margin-top: 20px; /* Adjusted space between image and text content */
-  }
-
-  .postImage {
-    display: none;
+  .mediaFrame {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    max-height: 62vh;
   }
 }

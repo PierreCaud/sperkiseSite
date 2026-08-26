@@ -1,0 +1,52 @@
+.pageShell {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-top: 1.5rem;
+}
+
+.pageHeader {
+  max-width: 58rem;
+  margin-bottom: 1.2rem;
+}
+
+.pageHeader h1 {
+  margin: 0;
+  font-family: var(--font-display), serif;
+  font-size: clamp(2.4rem, 5vw, 4.4rem);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+}
+
+.pageHeader p {
+  max-width: 60ch;
+  margin: 1rem 0 0;
+  color: var(--muted);
+}
+
+.kicker {
+  display: inline-flex;
+  padding: 0.35rem 0.7rem;
+  margin-bottom: 0.75rem;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent-strong);
+  font-size: 0.75rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+.state {
+  padding: 1rem 1.2rem;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  color: var(--muted);
+}
+
+@media (max-width: 720px) {
+  .pageShell {
+    padding-top: 1rem;
+  }
+}
