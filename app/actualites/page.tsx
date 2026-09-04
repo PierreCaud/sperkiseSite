@@ -79,7 +79,7 @@ const Actualites = () => {
               <h2>Bourse aux Minéraux et Fossiles - 26-27/09/2026</h2>
             </div>
             <Image
-              src='/images/afficheBourse2024.webp'
+              src='/images/bourse_2026.jpg'
               alt='Affiche de la bourse Sperkise'
               width={320}
               height={420}
