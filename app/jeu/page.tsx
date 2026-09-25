@@ -112,18 +112,47 @@ const JeuPierre = () => {
             estimation et le premier en date en cas d&apos;égalité.
           </p>
         </div>
-
-        <div className={styles.stonePreview} aria-label='Pierre du jeu'>
-          <div className={styles.stoneGlow} />
-          <div className={styles.stone}>
-            <span className={styles.stoneTag}>Pierre mystère</span>
-            <strong>3,5 kg</strong>
-          </div>
-        </div>
       </section>
 
       <div className={styles.cardGrid}>
         <div className={styles.card}>
+          <section className={styles.prizes} aria-labelledby='prizes-title'>
+            <div>
+              <p className={styles.kicker}>Les prix du week-end</p>
+              <h2 id='prizes-title'>Un spécimen à gagner chaque jour</h2>
+            </div>
+
+            <div className={styles.prizeGrid}>
+              <article className={styles.prizeDay}>
+                <div className={styles.prizeImages}>
+                  <img
+                    src='/images/caillou-ammo.png'
+                    alt='Pierre proposée comme prix du samedi'
+                  />
+                </div>
+                <h3>Samedi</h3>
+                <p>Le prix du samedi</p>
+              </article>
+
+              <article className={styles.prizeDay}>
+                <div
+                  className={`${styles.prizeImages} ${styles.prizeImagesSunday}`}
+                >
+                  <img
+                    src='/images/caillou-carré.png'
+                    alt='Première pierre proposée comme prix du dimanche'
+                  />
+                  <img
+                    src='/images/caillou-left.png'
+                    alt='Deuxième pierre proposée comme prix du dimanche'
+                  />
+                </div>
+                <h3>Dimanche</h3>
+                <p>Les prix du dimanche</p>
+              </article>
+            </div>
+          </section>
+
           <h2>Formulaire de participation</h2>
           <p className={styles.note}>
             La case de consentement pour le jeu est obligatoire. La case pour
@@ -225,8 +254,9 @@ const JeuPierre = () => {
 
             <div className={styles.legalNotice}>
               Les données sont collectées uniquement pour le résultat du jeu,
-              les informations du club et les relances autorisées. Un bouton de
-              désinscription sera présent dans tout message envoyé.
+              les informations du club et les relances autorisées. Une demande
+              de désinscription est possible a tout moment en envoyant un mail a
+              l'adresse mentionnée dans la page contact.
             </div>
 
             <button
