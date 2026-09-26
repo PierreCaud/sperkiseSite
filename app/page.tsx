@@ -22,6 +22,9 @@ const HomePage = () => {
             <Link href='/actualites' className={styles.primaryAction}>
               Voir les actualités
             </Link>
+            <Link href='/jeu' className={styles.secondaryAction}>
+              Jeu de la pierre
+            </Link>
             <Link href='/contact' className={styles.secondaryAction}>
               Nous contacter
             </Link>

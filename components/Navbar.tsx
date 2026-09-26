@@ -81,6 +81,16 @@ const Navbar = () => {
           </li>
           <li className={styles.navItem}>
             <Link
+              href='/jeu'
+              className={`${styles.navLink} ${pathname === '/jeu' ? styles.active : ''}`}
+              aria-current={pathname === '/jeu' ? 'page' : undefined}
+              onClick={closeMenu}
+            >
+              Jeu
+            </Link>
+          </li>
+          <li className={styles.navItem}>
+            <Link
               href='/contact'
               className={`${styles.navLink} ${pathname === '/contact' ? styles.active : ''}`}
               aria-current={pathname === '/contact' ? 'page' : undefined}
