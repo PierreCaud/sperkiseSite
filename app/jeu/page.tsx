@@ -69,27 +69,6 @@ const JeuPierre = () => {
         throw new Error(result?.error || 'La soumission a échoué.')
       }
 
-      if (!process.env.NEXT_PUBLIC_GOOGLE_SHEET_WEBAPP_URL) {
-        const subject = encodeURIComponent(
-          'Participation au jeu de la pierre - Sperkise',
-        )
-        const body = encodeURIComponent(
-          [
-            'Participation au jeu de la pierre',
-            '',
-            `Prénom: ${form.firstName}`,
-            `Nom: ${form.lastName}`,
-            `Email: ${form.email}`,
-            `Téléphone: ${form.phone || 'non renseigné'}`,
-            `Estimation du poids: ${form.guess}`,
-            `Consentement pour le jeu: ${form.consentGame ? 'Oui' : 'Non'}`,
-            `Consentement relance année suivante: ${form.consentNextYear ? 'Oui' : 'Non'}`,
-          ].join('\n'),
-        )
-
-        window.location.href = `mailto:michael.laurent59@gmail.com?subject=${subject}&body=${body}`
-      }
-
       router.push('/jeu/merci')
     } catch (error) {
       console.error('Erreur soumission jeu:', error)
@@ -256,7 +235,7 @@ const JeuPierre = () => {
               Les données sont collectées uniquement pour le résultat du jeu,
               les informations du club et les relances autorisées. Une demande
               de désinscription est possible a tout moment en envoyant un mail a
-              l'adresse mentionnée dans la page contact.
+              l&apos;adresse mentionnée dans la page contact.
             </div>
 
             <button
